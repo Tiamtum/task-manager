@@ -1,7 +1,7 @@
 import {Route,Routes, useLocation} from "react-router-dom";
 import {useState, useEffect} from "react";
 
-import Navbar from "./components/Navbar/Narbar.component";
+import Navbar from "./components/Navbar.component";
 import Root from './routes/root.component';
 import LoginPage from "./routes/login/login-page.component"
 import RegisterPage from "./routes/register/register-page.component";
