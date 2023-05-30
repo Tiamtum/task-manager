@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import FormComponent from "../../components/Navbar/Form.component";
+import FormComponent from "../../components/Form.component";
 
 export default function LoginPage(){
     return(
