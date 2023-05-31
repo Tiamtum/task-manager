@@ -1,13 +1,13 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import ListItem from "./ListItem/ListItem.component";
-import AddTaskModal from "./Modal/AddTaskModal.component";
-import MyButton from "./Button/MyButton";
+
 
 import "./List.styles.css";
 
 export default function List()
 {
-    const [modalShow, setModalShow] = useState(false);
+    // const [modalShow, setModalShow] = useState(false);
     const [tasks, setTasks] = useState([{taskName:"Task Manager",shortDesc:"Complete it",longDesc:"See shortDesc",priority:"med",due:"whenever",tags:"react"}]);
 
     console.log("list render")
@@ -23,11 +23,7 @@ export default function List()
                     })
                 }
             </div>
-
-            <MyButton text={"Add a task"} showStateHandler={setModalShow} />
-            <AddTaskModal tasks={tasks} heading={"Add a task"} show={modalShow} onHide={() => setModalShow(false)} />
-
-
+            <Link to="/list/add" className="btn btn-outline-dark float-end mt-3">Add an item</Link>
         </div>
     );
 
