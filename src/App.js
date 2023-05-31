@@ -1,49 +1,19 @@
-import {Route,Routes, useLocation} from "react-router-dom";
-import {useState, useEffect} from "react";
+import { Route, Routes } from "react-router-dom";
+import MyNavbar from "./components/Navbar/Navbar.component";
+import List from "./components/List/List.component";
+import AboutPage from "./components/AboutPage/AboutPage.component";
+import ErrorPage from "./components/ErrorPage/ErrorPage.component";
 
-import Navbar from "./components/Navbar.component";
-import Root from './routes/root.component';
-import LoginPage from "./routes/login/login-page.component"
-import RegisterPage from "./routes/register/register-page.component";
-import AboutPage from "./routes/about/about-page.component";
-import DashBoardPage from "./routes/dashboard/dashboard-page.component";
-
-import ErrorPage from "./routes/error-page.component";
-
-import './App.css';
-
-//https://www.youtube.com/watch?v=Ul3y1LXxzdU
-//useParams for dynamic routes like ../:id
-//nested routes, can take advantage of 'layout' components:
-//<Route path="/parent" element={<parentLayout />}
-//  Route index element={<firstRoute /}
-//  Route path=".." element={<secondRoute /}
-//  Route path=".." element={<thirdRoute /}
-//</Route>
-//Need <Outlet /> within the 1st/2nd/3rd/etc. ; useOutletContext to share data between them
-//location = useLocation();
-//<Link ... state={} />
-
-
-function App() {
-  
-  const [brandText, setBrandText] = useState("Task Manager");
-  const [buttonText, setButtonText] = useState("About");
+export default function App() {
   
   return (
-    <> 
-    <Navbar brandText={brandText} buttonText={buttonText}/>
+    <>
+    <MyNavbar brandText={"Task Manager"} buttonText={"About"} />
     <Routes>
-      <Route path="/" element={<Root />} />
-      <Route path="/login" element={<LoginPage />}/>
-      <Route path="/register" element={<RegisterPage />}/>
-      <Route path="/about" element={<AboutPage />}/>
-      <Route path="/dashboard" element={<DashBoardPage />}/>
-
-      <Route path="*" element={<ErrorPage/>}/>
+        <Route path="/" element={<List />}/>
+        <Route path="/about" element={<AboutPage />}/>
+        <Route path="*" element={<ErrorPage />}/>
     </Routes>
     </>
   );
 }
-
-export default App;

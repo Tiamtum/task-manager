@@ -1,2 +1,2 @@
 # Task Manager
-List making application inspired by Trello.
+List making application.
