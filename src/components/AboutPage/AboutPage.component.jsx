@@ -10,6 +10,7 @@ function ColoredLine({color}){
     );
 }
 export default function AboutPage() {
+    console.log("about page render");
     return(        
         <div className="jumbotron text-center my-5">
         <h1 className="display-4">About</h1>
