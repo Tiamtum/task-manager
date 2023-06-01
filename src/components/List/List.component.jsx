@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import ListItem from "./ListItem/ListItem.component";
 
 
@@ -7,23 +7,22 @@ import "./List.styles.css";
 
 export default function List()
 {
-    // const [modalShow, setModalShow] = useState(false);
-    const [tasks, setTasks] = useState([{taskName:"Task Manager",shortDesc:"Complete it",longDesc:"See shortDesc",priority:"med",due:"whenever",tags:"react"}]);
+    //https://react.dev/learn/updating-arrays-in-state
+    const [tasks, setTasks] = useState([{taskName:"task",summary:"summary",description:"descrip",priority:"prio",due:"6/1/2023",tags:"React", id:0}]);
 
-    console.log("list render")
-    console.log(tasks);
+    console.log("list render", tasks)
     return(
         <div id="List" className="container-lg mt-5">
-            <div className="row justify-content-start">
-                {
-                    tasks.map(item=>{
-                        return(
-                            <ListItem task={item} />
-                        );
-                    })
-                }
+            <div className="row justify-content-around">
+                    {
+                        tasks.map(task=>{
+                            return(
+                                <ListItem task={task} key={task.id} />
+                            );
+                        })
+                    }
             </div>
-            <Link to="/list/add" className="btn btn-outline-dark float-end mt-3">Add an item</Link>
+            <Link to="/list/add" className="btn btn-outline-dark float-end mt-3" state={tasks} >Add an item</Link>
         </div>
     );
 
