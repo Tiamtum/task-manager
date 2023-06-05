@@ -1,14 +1,14 @@
-import { Link } from "react-router-dom";
 import  Button  from "react-bootstrap/Button";
 import  Modal  from "react-bootstrap/Modal";
 
 import { useState } from "react";
-import DetailedListItem from "./DetailedListItem/DetailedListItem.component";
+import ColoredLine from "../ColoredLine/ColoredLined.component";
+
 export default function ListItem({task})
 {
     //taskName:"",summary:"",description:"",priority:"",due:"",tags:""
 
-    const {taskName, summary, description, priority, due, tags,id} = task;
+    const {taskName, summary, description, priority, due} = task;
     console.log("list item render", task)
 
     const [show, setShow] = useState(false);
@@ -21,10 +21,9 @@ export default function ListItem({task})
            <span id="task" className="col">{taskName}</span>            
            <span id="prio" className="col">{priority}</span>
            <span id="due" className="col">{due}</span> 
-           <span id="summary" className="col">{summary}</span>
-            {/* <span id="details" className="col"><Link to={`/list/${id}`}>Details</Link></span> */}
-            
-            <span className="col"><Button variant="outline-primary" onClick={handleShow}>Details </Button></span>
+           <span id="summary" className="col">{summary}</span>           
+            <span className="col"><Button variant="outline-primary" className="mb-3" onClick={handleShow}>Details </Button></span>
+            <ColoredLine color="black" />
             <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
             <Modal.Title>{taskName}</Modal.Title>
