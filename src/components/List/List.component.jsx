@@ -33,7 +33,7 @@ export default function List()
               <span className="col mb-2"><strong>Priority</strong></span>
               <span className="col mb-2"><strong>Due</strong></span> 
               <span className="col mb-2"><strong>Summary</strong></span>           
-              <span className="col mb-2"><strong>More Details</strong></span>
+              <span className="col mb-2"><strong>Actions</strong></span>
               <ColoredLine color="black" />
                     {
                         tasks.map(task=>{
@@ -44,7 +44,7 @@ export default function List()
                     }
             </div>
 
-            <Link to="/list/add" className="btn btn-outline-dark float-end mt-5" state={tasks} >Add an item</Link>
+            <Link to="/list/add" className="btn btn-outline-success float-end mt-5" state={tasks} >Add an item</Link>
         </div>
     );
 
