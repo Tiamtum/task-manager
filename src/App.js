@@ -6,6 +6,8 @@ import List from "./components/List/List.component";
 import AddItem from "./components/List/AddItem/AddItem.component"
 import AboutPage from "./components/AboutPage/AboutPage.component";
 import ErrorPage from "./components/ErrorPage/ErrorPage.component";
+import EditPage from "./components/EditPage/EditPage.component";
+import DeletePage from "./components/DeletePage/DeletePage.component";
 
 export default function App() {  
   
@@ -18,6 +20,8 @@ export default function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/list" element={ <List />} />
           <Route path="/list/add" element={ <AddItem />} />
+          <Route path="/list/:id/edit" element={ <EditPage />} />
+          <Route path="/list/:id/delete" element={ <DeletePage />} />
         <Route />
         <Route path="/about" element={ <AboutPage />} />
         <Route path="*" element={ <ErrorPage /> } />
