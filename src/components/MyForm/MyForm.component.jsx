@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 const lastElement = arr => arr[(arr.length)-1]
 
-function handlePost(form,navigate)
+async function handlePost(form)
 {
+    console.log("handlePost called")
+    
     const formData = new FormData(form);
     let id = 0;
-    fetch(`http://localhost:3030/tasks`,{method: "GET"})
+    await fetch(`http://localhost:3030/tasks`,{method: "GET"})
     .then(response => response.json())
     .then(result => {
         console.log("fetched: ",result, "result.length=",result.length); 
@@ -21,50 +23,51 @@ function handlePost(form,navigate)
 
 
     const formJson = JSON.stringify(Object.fromEntries(formData.entries()));
-    fetch('http://localhost:3030/tasks', 
+    await fetch('http://localhost:3030/tasks', 
         { 
-        method: form.method, 
+        method: "POST", 
         headers:{"Content-Type":"application/json"},
         body: formJson
         }
     )
-    .then(()=>{
-        navigate("/list")}
-    );
 }
 
-function handlePut(form,navigate,id)
+async function handlePut(form,id)
 {
+    console.log("handlePut called")
     const formData = new FormData(form);  
     const formJson = JSON.stringify(Object.fromEntries(formData.entries()));
-    fetch(`http://localhost:3030/tasks?id=${id}`, 
+    await fetch(`http://localhost:3030/tasks/${id}`, 
     { 
-        method: form.method, 
+        method: "PUT", 
         headers:{"Content-Type":"application/json"},
         body: formJson
         }
     )
-    .then(()=>{
-        navigate("/list")}
-    );
 }
 
 
 
 export default function MyForm({method, taskName, summary, description, priority, due, id,buttonText})
 {
-    console.log("FORM RENDER")
+    console.log("FORM RENDER", method, buttonText)
     let navigate = useNavigate();
     function handleSubmit(event){
         event.preventDefault();
         const form = event.target;
         if(method === "POST")
         {
-            handlePost(form,navigate);
+            handlePost(form,navigate,method)
+            .then(()=>{
+                navigate("/list");
+            })
         }
         else if(method === "PUT")
         {
-            handlePut(form,id,navigate);
+            handlePut(form,id,navigate,method)
+            .then(()=>{
+                navigate("/list");
+            })
         }
     }
 
