@@ -30,13 +30,12 @@ export default function ListItem({task})
             <ColoredLine color="black" />
             <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
-            <Modal.Title>{taskName}</Modal.Title>
+            <Modal.Title>{`[${priority}]`} {taskName}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 <h4>{summary}</h4>
                 <p>{description}</p>
-                <p>{due}</p>
-                <p>{priority}</p>
+                <p>Due: {due}.</p>
             </Modal.Body>
             <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
