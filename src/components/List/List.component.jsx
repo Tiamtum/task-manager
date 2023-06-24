@@ -27,7 +27,7 @@ export default function List()
 
     console.log("list render", tasks)
     return(
-        <div id="List" className="container-lg mt-5">
+        <div className="List container-lg mt-5">
             <div className="row justify-content-around">
               <span className="col mb-2"><strong>Task</strong></span>            
               <span className="col mb-2"><strong>Priority</strong></span>
